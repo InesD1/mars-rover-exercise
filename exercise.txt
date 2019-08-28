@@ -1,0 +1,149 @@
+// Rover Object Goes Here
+// ======================
+
+//Iteration 1
+let myRover ={ 
+  direction: "N", 
+   x: 0,
+   y: 0,
+   travelLog: [{x:0, y:0}]
+};
+
+// ======================
+//Iteration 2
+function turnLeft(rover){
+  console.log("turnLeft was called!");
+ 
+  switch (rover.direction){
+    case "N":
+      rover.direction = "W";
+      console.log(rover.direction);
+      break;
+      
+    case "W":
+      rover.direction = "S";
+      console.log(rover.direction);
+      break;
+     
+    case "S": 
+      rover.direction = "E";
+      console.log(rover.direction);
+      break; 
+     
+    case "E":
+      rover.direction = "N";
+      console.log(rover.direction);
+      break;
+      
+   }  
+  
+ }
+
+function turnRight(rover){
+  console.log("turnRight was called!");
+ 
+  switch (rover.direction){
+    case "N":
+      rover.direction = "E";
+      console.log(rover.direction);
+      break;
+      
+    case "E":
+      rover.direction = "S";
+      console.log(rover.direction);
+      break;
+     
+    case "S": 
+      rover.direction = "W";
+      console.log(rover.direction);
+      break; 
+     
+    case "W":
+      rover.direction = "N";
+      console.log(rover.direction);
+      break;
+      
+    }  
+  
+ }
+
+//Iteration 3
+function moveForward(rover){
+  console.log("moveForward was called");
+  if (rover.x >= 0 && rover.x < 10) 
+  if (rover.y >=0 && rover.y < 10) {
+      
+  switch (rover.direction){
+     case "N":        
+       rover.y--;
+       console.log(`${rover.x} & ${rover.y}`);
+       break;
+      
+     case "W":
+       rover.x--;
+       console.log(`${rover.x} & ${rover.y}`);
+       break;
+      
+     case "S":
+       rover.y++;
+       console.log(`${rover.x} & ${rover.y}`);
+       break;
+      
+        case "E":
+        rover.x++;
+        console.log(`${rover.x} & ${rover.y}`);
+        break;
+    }
+}  
+ 
+  //Bonus 2
+function moveBackwards(rover){
+  console.log("moveBackwards was called");
+  if (rover.x >= 0 && rover.x < 10) 
+  if (rover.y >=0 && rover.y < 10){
+      
+  switch (rover.direction){
+     case "N":        
+       rover.y++;
+       console.log(`${rover.x} & ${rover.y}`);
+       break;
+      
+     case "W":
+       rover.x++;
+       console.log(`${rover.x} & ${rover.y}`);
+       break;
+      
+     case "S":
+       rover.y--;
+       console.log(`${rover.x} & ${rover.y}`);
+       break;
+      
+        case "E":
+        rover.x--;
+        console.log(`${rover.x} & ${rover.y}`);
+        break;
+    }
+} 
+  
+//Iteration 4
+  function newCommands(rover, command){
+    for (let i = 0; i < command.length; i++){
+      let commands = command[i];
+    switch(commands){
+      case "l": // left
+        turnLeft(rover, commands);
+        break;
+      case "r": // right
+        turnRight(rover, commands);
+        break;  
+      case "f": // forward
+        moveForward(rover, commands);
+        break;    
+    }
+}
+  
+newCommands(myRover,"rffrfflfrff");
+  
+  //Iteration 5
+  console.log(`The position is: ${rover.x} and ${rover.y}`);
+console.log(rover.travelLog);
